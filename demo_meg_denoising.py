@@ -1,4 +1,4 @@
-# Authors: Alexandre Gramfort <alexandre.gramfort@telecom-paristech.fr>
+# Authors: Alexandre Gramfort <alexandre.gramfort@inria.fr>
 #          Manuel Moussallam <manuel.moussallam@gmail.com>
 #
 # License: BSD (3-clause)
@@ -24,11 +24,11 @@ if __name__ == '__main__':
 
     # Reference true data
     seed = 42
-    evoked_no_noise = simu_meg(snr=200, white=True, seed=seed)
+    evoked_no_noise = simu_meg(nave=10000, white=True, seed=seed)
     single_no_noise = evoked_no_noise.data[:n_channels, :]
 
     # noisy simulation
-    evoked_noise = simu_meg(snr=SNR, white=white, seed=seed)
+    evoked_noise = simu_meg(nave=50, white=white, seed=seed)
     single_noise = evoked_noise.data[:n_channels, :]
 
     n_jobs = 1  # set to -1 to run in parellel
