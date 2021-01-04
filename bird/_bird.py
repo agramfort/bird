@@ -307,8 +307,8 @@ def _bird_core(
     Parameters
     ----------
     X : array, shape (n_channels, n_times)
-        The numpy n_channels-vy-N array to be denoised where n_channels is
-        number of sensors and N the dimension
+        The data to be denoised where n_channels is number of sensors
+        and n_times the dimension
     scales : list
         The list of MDCT scales that will be used to built the
         dictionary Phi
@@ -534,7 +534,7 @@ def s_bird(
     n_channels = X.shape[0]
     n_samples = float(X.shape[1])
     # size of the full shift-invariant dictionary
-    M = np.sum(np.array(scales) / 2) * n_samples
+    M = np.sum(np.array(scales) // 2) * n_samples
     sigma = sqrt((1.0 - (2.0 / np.pi)) / float(n_samples))
     Lambda_W = sigma * sqrt(2.0) * erfinv((1.0 - p_above) ** (1.0 / float(M)))
 

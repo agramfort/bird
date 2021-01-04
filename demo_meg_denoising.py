@@ -10,7 +10,6 @@ from joblib import Memory
 
 
 if __name__ == '__main__':
-    SNR = 9.
     white = False  # change to True/False for white/pink noise
 
     scales = [8, 16, 32, 64, 128]
@@ -28,7 +27,7 @@ if __name__ == '__main__':
     single_no_noise = evoked_no_noise.data[:n_channels, :]
 
     # noisy simulation
-    evoked_noise = simu_meg(nave=50, white=white, seed=seed)
+    evoked_noise = simu_meg(nave=2000, white=white, seed=seed)
     single_noise = evoked_noise.data[:n_channels, :]
 
     n_jobs = 1  # set to -1 to run in parellel
@@ -62,7 +61,7 @@ if __name__ == '__main__':
                ('Noisy', 'Clean', 'BIRD Estimates', 'S-BIRD Estimates'),
                loc='upper right')
 
-    plt.xlabel('Time (ms)', fontsize=16.0)
+    plt.xlabel('Time (ms)')
     plt.ylabel('MEG')
-    plt.ylim([-1.5e-12, 2.0e-12])
+    plt.ylim([-1.5e-12, 2.5e-12])
     plt.show()

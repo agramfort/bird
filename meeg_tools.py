@@ -55,7 +55,7 @@ class DataFun():
         return out
 
 
-def simu_meg(nave=30, white=True, seed=None):
+def simu_meg(nave=150, white=True, seed=None):
     tmin = -0.1
     sfreq = 1000.0  # Hz
     tstep = 1.0 / sfreq
@@ -101,7 +101,7 @@ def simu_meg(nave=30, white=True, seed=None):
 
 
 def simu_bimodal_meg(
-    nave=30,
+    nave=300,
     white=True,
     seed=None,
     freqs=[3, 50],
