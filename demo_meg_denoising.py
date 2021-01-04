@@ -16,17 +16,21 @@ if __name__ == '__main__':
     n_runs = 30
 
     # Structured sparsity parameters
-    n_channels = 100
+    n_channels = 20  # Set this value to 20 to reproduce figures from the paper
     p_active = 1.
 
     random_state = 42
 
     # Reference true data
+    # Note : due to some changes in MNE, simulated data is no longer 
+    # parameterized using explicit SNR values, but rather using the NAVE parameter
+    # Look up some documentation there: https://mne.tools/dev/generated/mne.simulation.simulate_evoked.html#mne.simulation.simulate_evoked
     seed = 42
     evoked_no_noise = simu_meg(nave=10000, white=True, seed=seed)
     single_no_noise = evoked_no_noise.data[:n_channels, :]
 
-    # noisy simulation
+    # noisy simulation : to simulate a SNR of approximately 10
+    # we use 10 times less averaged epochs (nave parameter set to 2000)
     evoked_noise = simu_meg(nave=2000, white=white, seed=seed)
     single_noise = evoked_noise.data[:n_channels, :]
 
